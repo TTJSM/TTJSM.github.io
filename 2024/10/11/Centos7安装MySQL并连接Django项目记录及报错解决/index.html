@@ -70,12 +70,12 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
 
-<p>此时断网了，意外下载中断，再次yum显示：<br class='item-img' data-src='/imgs/0_1.png'><img src="/imgs/0_1.png" alt="在这里插入图片描述"></p>
+<p>此时断网了，意外下载中断，再次yum显示：<br class='item-img' data-src='https://s2.loli.net/2024/10/12/phLZoKMrsSlieq8.png'><img src="https://s2.loli.net/2024/10/12/phLZoKMrsSlieq8.png" alt="0_1"></p>
 <p>直接kill 30656，如果不知道是哪个进程：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep yum</span><br></pre></td></tr></table></figure>
 
 <p>找到对应yum进程再kill</p>
-<p>然后继续yum，出现报错：<br class='item-img' data-src='/imgs/0_2.png'><img src="/imgs/0_2.png" alt="在这里插入图片描述"></p>
+<p>然后继续yum，出现报错：<br class='item-img' data-src='https://s2.loli.net/2024/10/12/7YMiZprc35jax6L.png'><img src="https://s2.loli.net/2024/10/12/7YMiZprc35jax6L.png" alt="0_2"></p>
 <p>禁掉GPG验证检查，在之前的yum命令后面加上–nogpgcheck：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql-community-server --nogpgcheck</span><br></pre></td></tr></table></figure>
 
@@ -104,7 +104,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <h1 id="3-安装mysqlclient"><a href="#3-安装mysqlclient" class="headerlink" title="3. 安装mysqlclient"></a>3. 安装mysqlclient</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mysqlclient</span><br></pre></td></tr></table></figure>
 
 <h1 id="4-连接Django项目"><a href="#4-连接Django项目" class="headerlink" title="4. 连接Django项目"></a>4. 连接Django项目</h1><p>找到你的Django项目中settings.py中的数据库配置部分，将信息修改为刚刚配置的信息</p>
-<p class='item-img' data-src='/imgs/0_3.png'><img src="/imgs/0_3.png" alt="在这里插入图片描述"></p>
+<p class='item-img' data-src='https://s2.loli.net/2024/10/12/iFBwAJTErxu58pP.png'><img src="https://s2.loli.net/2024/10/12/iFBwAJTErxu58pP.png" alt="0_3"></p>
 <p>然后按照你写的NAME，创建一个数据库</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database 数据库名;</span><br></pre></td></tr></table></figure>
 
