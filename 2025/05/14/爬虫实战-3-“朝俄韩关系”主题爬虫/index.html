@@ -64,23 +64,23 @@ lightGallery(document.getElementById('post-bg'), {
  }
 });
 document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>爬虫实战-3-“朝俄韩关系”主题爬虫</h1></div><hr><div id="post-content"><h1 id="一、爬取主题"><a href="#一、爬取主题" class="headerlink" title="一、爬取主题"></a>一、<strong>爬取主题</strong></h1><p>朝俄韩关系</p>
-<h1 id="二、关键技术"><a href="#二、关键技术" class="headerlink" title="二、关键技术"></a>二、<strong>关键技术</strong></h1><p class='item-img' data-src='/./assets/wps1.jpg'><img src="/./assets/wps1.jpg" alt="img"> </p>
+<h1 id="二、关键技术"><a href="#二、关键技术" class="headerlink" title="二、关键技术"></a>二、<strong>关键技术</strong></h1><p class='item-img' data-src='https://s2.loli.net/2025/05/14/gLkQWsfGImU352P.jpg'><img src="https://s2.loli.net/2025/05/14/gLkQWsfGImU352P.jpg" alt="img"> </p>
 <p><strong>图2.1 网络爬虫的系统结构[1]</strong></p>
 <h2 id="网页获取"><a href="#网页获取" class="headerlink" title="网页获取"></a>网页获取</h2><p>基本原理是模拟浏览器进行HTTP请求，爬虫客户端通过HTTP请求向web服务器发送请求，获取服务器端的响应后下载网页，完成爬虫系统的爬取工作（requests、urllib、Scrapy）。</p>
 <p>本次使用requests库模拟浏览器向服务器发送请求。</p>
-<p class='item-img' data-src='/./assets/wps2.jpg'><img src="/./assets/wps2.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/4OQUtAyYciZxoSn.jpg'><img src="https://s2.loli.net/2025/05/14/4OQUtAyYciZxoSn.jpg" alt="img"></p>
 <p><strong>图2.2 网页获取模块</strong></p>
 <h2 id="网页解析"><a href="#网页解析" class="headerlink" title="网页解析"></a>网页解析</h2><p>一个网页去噪的过程，主要是网页内容正文抽取，提取网页中的内容时需要分析页面的HTML结构，从中提取页面的有效信息。</p>
 <p>常见方法有通过BeautifulSoup对HTML结构解析、利用正则表达式抽取文本数据。</p>
 <p>BeautifulSoup主要是Xpath和CssSelector方法，针对网站的HTML标签可以提取出所需要的有效信息，可以选择tag、id、class等多种方式进行定位选择。</p>
 <p>但在复杂的页面结构中，需要采取正则表达式来提取有效信息。</p>
 <p>这里使用BeautifulSoup、urljoin结合对网页的分析来进行有效信息的提取。</p>
-<p class='item-img' data-src='/./assets/wps3.jpg'><img src="/./assets/wps3.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/r4ZqT3Eyei75kF6.jpg'><img src="https://s2.loli.net/2025/05/14/r4ZqT3Eyei75kF6.jpg" alt="wps3"></p>
 <p><strong>图2.3 网页解析模块</strong></p>
 <h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><p>爬虫抓取的数据一般有两种存储方式：本地保存，如CSV、Excel格式，或直接存储到数据库。</p>
 <p>一般写入数据库时采取爬一次数据就进行一次向量化清洗并入库，避免出现一些网络错误时已爬数据失效。</p>
 <p>这里保存在本地csv文件中，内容包括：url、title、similarity、content。</p>
-<p class='item-img' data-src='/./assets/wps4.jpg'><img src="/./assets/wps4.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/97mdskApoeZ2aJL.jpg'><img src="https://s2.loli.net/2025/05/14/97mdskApoeZ2aJL.jpg" alt="wps4"></p>
 <p><strong>图2.4 数据存储模块</strong></p>
 <h2 id="主题判别"><a href="#主题判别" class="headerlink" title="主题判别"></a>主题判别</h2><p>主要是判断爬取网页的主题相关性，大多被当做一个文本分类的问题来探索，目前结合网页中链接的锚文本、网页标签等来计算网页中URL与主题的相关度。</p>
 <p>常用的主题相似度判别算法有：</p>
@@ -90,25 +90,25 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </ol>
 <p>这里尝试使用TF-IDF+关键词匹配度+余弦相似度来判断相关度：</p>
 <p>TF-IDF（Term Frequency-Inverse Document Frequency, 词频-逆向文件频率）是一种用于评估一个词在一个文档中的重要程度的算法，考虑词在文档中的频率（TF）以及在所有文档中出现的频率（IDF），通过两者相乘得到TF-IDF值，TF-IDF权值越高，重要性越高。</p>
-<p class='item-img' data-src='/./assets/wps5.jpg'><img src="/./assets/wps5.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/FnQMoOCy6kTjflv.jpg'><img src="https://s2.loli.net/2025/05/14/FnQMoOCy6kTjflv.jpg" alt="wps5"></p>
 <p><strong>图2.5 TF计算公式（词在文档中出现次数&#x2F;文档中总次数）</strong></p>
-<p class='item-img' data-src='/./assets/wps6.jpg'><img src="/./assets/wps6.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/otGdJuxm75NfrAR.jpg'><img src="https://s2.loli.net/2025/05/14/otGdJuxm75NfrAR.jpg" alt="wps6"></p>
 <p><strong>图2.6 IDF计算公式（log(总文档数&#x2F;包含词的文档数+1)）</strong></p>
-<p class='item-img' data-src='/./assets/wps7.jpg'><img src="/./assets/wps7.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/8xQr1sz9oNvYlmP.jpg'><img src="https://s2.loli.net/2025/05/14/8xQr1sz9oNvYlmP.jpg" alt="wps7"></p>
 <p><strong>图2.7 TF-IDF计算公式（TF与IDF相乘）</strong></p>
 <p>余弦相似度（Cosine Similarity）计算两个向量夹角的余弦值，用于衡量他们之间的相似度。</p>
-<p class='item-img' data-src='/./assets/wps8.jpg'><img src="/./assets/wps8.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/gaRl3KhzMxJYm9I.jpg'><img src="https://s2.loli.net/2025/05/14/gaRl3KhzMxJYm9I.jpg" alt="wps8"></p>
 <p><strong>图2.8 余弦相似度计算公式</strong></p>
-<p class='item-img' data-src='/./assets/wps9.jpg'><img src="/./assets/wps9.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/89NrSade4PLptB6.jpg'><img src="https://s2.loli.net/2025/05/14/89NrSade4PLptB6.jpg" alt="wps9"></p>
 <p><strong>图2.9 主题判别模块</strong></p>
 <h2 id="网页搜索策略"><a href="#网页搜索策略" class="headerlink" title="网页搜索策略"></a>网页搜索策略</h2><p>主要目的是使爬虫有次序、有目的地搜索，运用合理的搜索策略可以保证主题爬虫选择更合理的爬行路径。</p>
 <p>分为静态搜索策略和动态搜索策略，区别是有无事先确定搜索规则：</p>
 <p>静态：依照确定的规则进行搜索，不会改变。</p>
 <p>动态：根据相关度实时调整搜索路线，分为基于文本内容（Fish-Search、Shark-Search）和基于链接关系的搜索（PageRank、HITS、HillTop）。</p>
 <p>这里主要使用静态搜索策略，设置待访问、已访问链接列表和计数器，从主页出发，不断爬取链接，对于非文章类链接，深入爬取，直至文章。</p>
-<p class='item-img' data-src='/./assets/wps10.jpg'><img src="/./assets/wps10.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/pN9j5WhwLmbyDX6.png'><img src="https://s2.loli.net/2025/05/14/pN9j5WhwLmbyDX6.png" alt="wps10"></p>
 <p><strong>图2.10 网页搜索策略</strong></p>
-<h1 id="三、问题及解决"><a href="#三、问题及解决" class="headerlink" title="三、问题及解决"></a>三、<strong>问题及解决</strong></h1><h2 id="问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律："><a href="#问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律：" class="headerlink" title="问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律："></a>问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律：</h2><p class='item-img' data-src='/./assets/wps11.png'><img src="/./assets/wps11.png" alt="img"><img src="/./assets/wps12.jpg" alt="img"> </p>
+<h1 id="三、问题及解决"><a href="#三、问题及解决" class="headerlink" title="三、问题及解决"></a>三、<strong>问题及解决</strong></h1><h2 id="问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律："><a href="#问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律：" class="headerlink" title="问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律："></a>问题：网站文章页面url的标识经过了编码，暂未发现可遍历规律：</h2><p class='item-img' data-src='https://s2.loli.net/2025/05/14/isJuOevRwEBrIM1.png'><img src="https://s2.loli.net/2025/05/14/isJuOevRwEBrIM1.png" alt="img"></p>
 <p><strong>图3.1 爬取策略问题</strong></p>
 <p>解决：</p>
 <p>从主页开始爬取，分为两种策略：</p>
@@ -118,12 +118,12 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </ol>
 <h2 id="问题：使用TF-IDF-余弦相似度来判断相关度极低，无法爬取有效数据："><a href="#问题：使用TF-IDF-余弦相似度来判断相关度极低，无法爬取有效数据：" class="headerlink" title="问题：使用TF-IDF+余弦相似度来判断相关度极低，无法爬取有效数据："></a>问题：使用TF-IDF+余弦相似度来判断相关度极低，无法爬取有效数据：</h2><p>解决：</p>
 <p>使用jieba分词，加入关键词频统计与TF-IDF+余弦相似度结合计算（目前效果不是很好，待改进）：</p>
-<p class='item-img' data-src='/./assets/wps13.jpg'><img src="/./assets/wps13.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/1xnDXVPj8abmtq2.png'><img src="https://s2.loli.net/2025/05/14/1xnDXVPj8abmtq2.png" alt="img"></p>
 <p><strong>图3.2 相似度计算问题</strong></p>
 <h2 id="问题：爬虫未设置停止条件："><a href="#问题：爬虫未设置停止条件：" class="headerlink" title="问题：爬虫未设置停止条件："></a>问题：爬虫未设置停止条件：</h2><p>解决：加入计数器，设置最大爬取文章数和未访问链接及已访问链接。</p>
-<p class='item-img' data-src='/./assets/wps14.jpg'><img src="/./assets/wps14.jpg" alt="img"></p>
+<p class='item-img' data-src='https://s2.loli.net/2025/05/14/Fv1biU3qNlrawgD.png'><img src="https://s2.loli.net/2025/05/14/Fv1biU3qNlrawgD.png" alt="img"></p>
 <p><strong>图3.3 爬虫结束问题</strong></p>
-<h1 id="四、爬取结果示例与思考"><a href="#四、爬取结果示例与思考" class="headerlink" title="四、爬取结果示例与思考"></a>四、<strong>爬取结果示例与思考</strong></h1><p class='item-img' data-src='/./assets/wps15.jpg'><img src="/./assets/wps15.jpg" alt="img"> <strong>图4.1 爬虫结果示例</strong></p>
+<h1 id="四、爬取结果示例与思考"><a href="#四、爬取结果示例与思考" class="headerlink" title="四、爬取结果示例与思考"></a>四、<strong>爬取结果示例与思考</strong></h1><p class='item-img' data-src='https://s2.loli.net/2025/05/14/vqgRKDVS4Z5Wpy9.png'><img src="https://s2.loli.net/2025/05/14/vqgRKDVS4Z5Wpy9.png"> <strong>图4.1 爬虫结果示例</strong></p>
 <p>从示例上看，虽然该文章完全符合预期主题，但是相关度仅是0.5，可能是相关度计算模块的TF-IDF方面并没有起到作用，而分词方面为1所致，需要后续对相关度计算研究学习。此外该次爬取的文章符合主题的并不多，大部分是少量相关，对于爬取技术方面还有所欠缺。</p>
 <p>整体来看，参考相关文献，对主题爬虫的过程基本实现，但若要达到实用且高效的程度，还需继续完善。</p>
 <h1 id="五、参考文献"><a href="#五、参考文献" class="headerlink" title="五、参考文献"></a>五、<strong>参考文献</strong></h1><p>[1] 潘晓英,陈柳,余慧敏,等.主题爬虫技术研究综述[J].计算机应用研究,2020,37(4):961-965,972.</p>
